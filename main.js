@@ -1,30 +1,49 @@
 import * as THREE from "three";
 
+const fov = 40;
+const aspect = 2; // the canvas default
+const near = 0.1;
+const far = 1000;
+const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+camera.position.z = 120;
+
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+// const camera = new THREE.PerspectiveCamera(
+//   75,
+//   window.innerWidth / window.innerHeight,
+//   0.1,
+//   1000
+// );
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
-const planeGeometry = new THREE.PlaneGeometry(7, 7);
-const planeMaterial = new THREE.MeshBasicMaterial({
-  color: 0xcccccc
-});
-const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-scene.add(plane);
+// const planeGeometry = new THREE.PlaneGeometry(7, 7);
+// const planeMaterial = new THREE.MeshBasicMaterial({
+//   color: 0xcccccc
+// });
+// const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+// scene.add(plane);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-geometry.translate(0, 0, 0.5);
+// const geometry = new THREE.BoxGeometry(1, 1, 1);
+// geometry.translate(0, 0, 0.5);
+// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+// const cube = new THREE.Mesh(geometry, material);
+// scene.add(cube);
+
+const radius =  2.0;  
+const tubeRadius =  1.0;  
+const radialSegments = 24;  
+const tubularSegments =  24;  
+const geometry = new THREE.TorusGeometry(
+	radius, tubeRadius,
+	radialSegments, tubularSegments );
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const donut = new THREE.Mesh(geometry, material);
+donut.rotation.y = Math.PI;;
+scene.add(donut);
 
 camera.position.z = 5;
 camera.position.y = 7;
@@ -34,3 +53,7 @@ camera.lookAt(0, 0, 0);
 function animate() {
   renderer.render(scene, camera);
 }
+
+renderer.setAnimationLoop(animate);
+
+
