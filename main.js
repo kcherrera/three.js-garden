@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // const fov = 40;
 // const aspect = 2; // the canvas default
@@ -56,7 +57,7 @@ const tubularSegments2 =  24;
 const geometry2 = new THREE.TorusGeometry(
 	radius, tubeRadius,
 	radialSegments, tubularSegments );
-const material2 = new THREE.MeshBasicMaterial({ color: "#C12EC3" });
+const material2 = new THREE.MeshBasicMaterial({ color: "#D583DF" });
 const donut2 = new THREE.Mesh(geometry2, material2);
 donut2.position.y = 0.5;
 donut2.position.x = 1.0;
@@ -70,10 +71,12 @@ camera.position.y = 7;
 // camera.up.set(0, 0, 1);
 camera.lookAt(0, 0, 0);
 
+const controls = new OrbitControls(camera, renderer.domElement)
 function animate() {
   donut.rotation.x += 0.03;
   donut2.rotation.y += 0.05;
   renderer.render(scene, camera);
+  controls.update();
 }
 
 renderer.setAnimationLoop(animate);
