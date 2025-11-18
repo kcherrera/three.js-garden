@@ -58,7 +58,7 @@ const tubularSegments2 =  32;
 const geometry2 = new THREE.TorusGeometry(
 	radius2, tubeRadius2,
 	radialSegments2, tubularSegments2 );
-const material2 = new THREE.MeshBasicMaterial({ color: "#D583DF" });
+const material2 = new THREE.MeshBasicMaterial({ color: "#2c3643" });
 const donut2 = new THREE.Mesh(geometry2, material2);
 donut2.position.y = 0.5;
 donut2.position.x = 1.0;
@@ -73,7 +73,7 @@ const tubularSegments3 =  32;
 const geometry3 = new THREE.TorusGeometry(
 	radius3, tubeRadius3,
 	radialSegments3, tubularSegments3 );
-const material3 = new THREE.MeshBasicMaterial({ color: "#2C3643" });
+const material3 = new THREE.MeshBasicMaterial({ color: "#431633" });
 const donut3 = new THREE.Mesh(geometry3, material3);
 donut3.position.y = 0.5;
 donut3.position.x = 1.0;
